@@ -131,3 +131,22 @@ Manter a mesma linha de versão (estável com estável; beta com beta). A docume
 - Site, checkout e valores do painel auditados.
 - Nenhuma configuração, plano, assinatura ou cobrança foi alterada.
 - Próxima frente: manutenção administrativa white label; clientes depois.
+
+
+## Pendência: localização automática da assinatura Asaas
+
+A documentação oficial confirma a configuração do token, webhook, API V3, envio sequencial e eventos de cobrança. Ela não informa qual campo o botão **[Asaas] Buscar assinatura** usa para localizar uma assinatura já existente.
+
+Não assumir que o campo **Empresa** precise ser igual no Saborite e no Asaas: ele aparenta ser identificação da conta/empresa, enquanto o vínculo da assinatura deve ser por dados do cliente ou identificador interno. O **externalReference** do Asaas é uma hipótese forte, mas ainda não foi confirmada pela documentação.
+
+Para investigar clientes antigos que encerraram e voltaram (ex.: Elza Lanches, Purtuga, Bella Star), comparar sem alterar nada:
+
+- cliente/empresa e identificação no Saborite;
+- cliente correspondente no Asaas;
+- e-mail, telefone e CPF/CNPJ;
+- `externalReference` do cliente/assinatura;
+- ID da assinatura e status no Asaas;
+- plano/valor da assinatura;
+- conta Asaas selecionada pelo token.
+
+A investigação deve ser feita pelo menu de suporte: **Cliente → Módulos → [Asaas] Buscar assinatura**. Não entrar no painel operacional nem alterar cardápio/pedidos enquanto a loja estiver aberta. Antes de salvar um novo plano, confirmar o retorno e o total da cobrança.
