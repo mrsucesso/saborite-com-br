@@ -46,9 +46,9 @@ Os botões de planos do site foram verificados:
 
 | Nome exibido no site | Preço exibido | Destino |
 |---|---:|---|
-| Básico | R$ 159,90/mês |  |
-| Essencial | R$ 229,90/mês |  |
-| Profissional | R$ 299,92/mês |  |
+| Básico | R$ 159,90/mês | `checkout.saborite.com/?plano=essencial&canal=site` |
+| Essencial | R$ 229,90/mês | `checkout.saborite.com/?plano=profissional&canal=site` |
+| Profissional | R$ 299,92/mês | `checkout.saborite.com/?plano=avançado&canal=site` |
 
 O checkout reconhece os três slugs e apresenta “Continuar para o plano” correspondente. Após o pagamento, informa disponibilidade da loja em aproximadamente 5 minutos.
 
@@ -66,9 +66,9 @@ Valores lidos em Ajustes:
 
 Os **valores estão alinhados** com os slugs do checkout, mas o nome comercial exibido no site está deslocado uma posição:
 
-- Site “Básico” usa o slug interno  e o valor do plano interno Essencial.
-- Site “Essencial” usa  e o valor do plano interno Profissional.
-- Site “Profissional” usa  e o valor do plano interno Avançado.
+- Site “Básico” usa o slug interno `essencial` e o valor do plano interno Essencial.
+- Site “Essencial” usa `profissional` e o valor do plano interno Profissional.
+- Site “Profissional” usa `avançado` e o valor do plano interno Avançado.
 
 A tela de Ajustes não apresentou campos para renomear os três planos; os campos observados permitem alterar valores. Como o site é gerenciado pela Gama Delivery, **não alterar valores, slugs ou assinaturas apenas para corrigir nomes**.
 
@@ -79,7 +79,7 @@ A documentação do parceiro orienta:
 1. No Asaas, criar webhook para cobranças.
 2. Usar a URL exibida no painel de clientes.
 3. API V3 e envio sequencial.
-4. Habilitar , ,  e .
+4. Habilitar `PAYMENT_CONFIRMED`, `PAYMENT_RECEIVED`, `PAYMENT_OVERDUE` e `PAYMENT_REFUNDED`.
 5. Gerar uma chave de API no Asaas.
 6. Inserir o token em Painel → Ajustes → Token Asaas.
 7. Para uma assinatura de loja: abrir loja → Suporte → Módulos → escolher plano → Asaas → Buscar/Gerar → Salvar.
@@ -107,10 +107,10 @@ Manter a mesma linha de versão (estável com estável; beta com beta). A docume
 
 ## API Gama Delivery / Saborite
 
-- Produção: 
-- Homologação: 
-- Login:  com e-mail e senha.
-- Requisições autenticadas usam .
+- Produção: `https://api.saborite.com.br/api/`
+- Homologação: `https://ambiente.delivery.app/api/`
+- Login: `POST /autenticacao/entrar/` com e-mail e senha.
+- Requisições autenticadas usam `x-api-key`.
 - Limite documentado: 5 requisições/segundo.
 - Principais áreas: pedidos, produtos, categorias, usuários, configurações, loja, relatórios, chat, motoboy, mesas, PDV, totem, taxas, notificações e webhooks.
 
